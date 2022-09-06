@@ -1,5 +1,5 @@
 {
-    "name": "spatie/elasticsearch-query-builder",
+    "name": "maxzhang666/elasticsearch-query-builder",
     "description": "Build and execute an Elasticsearch search query using a fluent PHP API",
     "keywords": [
         "spatie",
@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^7.4"
     },
     "require-dev": {
         "elasticsearch/elasticsearch": "^8.0",

@@ -27,12 +27,14 @@ class Builder
     protected ?array $fields = null;
 
     protected bool $withAggregations = true;
+    protected Client $client;
 
-    public function __construct(protected Client $client)
+    public function __construct(Client $client)
     {
+        $this->client = $client;
     }
 
-    public function addQuery(Query $query, string $boolType = 'must'): static
+    public function addQuery(Query $query, string $boolType = 'must'): Builder
     {
         if (! $this->query) {
             $this->query = new BoolQuery();
@@ -43,7 +45,7 @@ class Builder
         return $this;
     }
 
-    public function addAggregation(Aggregation $aggregation): static
+    public function addAggregation(Aggregation $aggregation): Builder
     {
         if (! $this->aggregations) {
             $this->aggregations = new AggregationCollection();
@@ -54,7 +56,7 @@ class Builder
         return $this;
     }
 
-    public function addSort(Sort $sort): static
+    public function addSort(Sort $sort): Builder
     {
         if (! $this->sorts) {
             $this->sorts = new SortCollection();
@@ -88,42 +90,42 @@ class Builder
         return $this->client->search($params);
     }
 
-    public function index(string $searchIndex): static
+    public function index(string $searchIndex): Builder
     {
         $this->searchIndex = $searchIndex;
 
         return $this;
     }
 
-    public function size(int $size): static
+    public function size(int $size): Builder
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function from(int $from): static
+    public function from(int $from): Builder
     {
         $this->from = $from;
 
         return $this;
     }
 
-    public function searchAfter(?array $searchAfter): static
+    public function searchAfter(?array $searchAfter): Builder
     {
         $this->searchAfter = $searchAfter;
 
         return $this;
     }
 
-    public function fields(array $fields): static
+    public function fields(array $fields): Builder
     {
         $this->fields = array_merge($this->fields ?? [], $fields);
 
         return $this;
     }
 
-    public function withoutAggregations(): static
+    public function withoutAggregations(): Builder
     {
         $this->withAggregations = false;
 

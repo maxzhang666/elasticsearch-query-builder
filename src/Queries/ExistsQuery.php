@@ -4,6 +4,8 @@ namespace Spatie\ElasticsearchQueryBuilder\Queries;
 
 class ExistsQuery implements Query
 {
+    protected string $field;
+
     public static function create(
         string $field
     ): self {
@@ -11,8 +13,9 @@ class ExistsQuery implements Query
     }
 
     public function __construct(
-        protected string $field
+        string $field
     ) {
+        $this->field = $field;
     }
 
     public function toArray(): array
