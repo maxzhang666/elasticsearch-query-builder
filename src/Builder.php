@@ -2,7 +2,7 @@
 
 namespace Spatie\ElasticsearchQueryBuilder;
 
-use Elastic\Elasticsearch\Client;
+use Elasticsearch\Client;
 use Spatie\ElasticsearchQueryBuilder\Aggregations\Aggregation;
 use Spatie\ElasticsearchQueryBuilder\Queries\BoolQuery;
 use Spatie\ElasticsearchQueryBuilder\Queries\Query;
