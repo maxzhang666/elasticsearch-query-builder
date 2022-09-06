@@ -13,7 +13,7 @@ abstract class Aggregation
         return $this->name;
     }
 
-    public function meta(array $meta): static
+    public function meta(array $meta): Aggregation
     {
         $this->meta = array_merge($this->meta, $meta);
 
